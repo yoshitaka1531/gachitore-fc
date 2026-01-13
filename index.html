@@ -14,57 +14,117 @@
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
-      background: var(--bg);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      background: radial-gradient(1200px 800px at 20% 10%, rgba(124,92,255,.25), transparent 60%),
+                  radial-gradient(900px 600px at 80% 0%, rgba(0,210,255,.18), transparent 55%),
+                  var(--bg);
       color:var(--text);
     }
     a{color:inherit; text-decoration:none}
     .wrap{max-width:1100px; margin:0 auto; padding:24px}
     header{
-      position:sticky; top:0;
-      background: rgba(11,15,25,.7);
-      border-bottom:1px solid var(--line);
+      position:sticky; top:0; backdrop-filter: blur(10px);
+      background: rgba(11,15,25,.55); border-bottom:1px solid var(--line);
+      z-index:10;
     }
-    .nav{
-      display:flex; justify-content:space-between; align-items:center;
-      max-width:1100px; margin:0 auto; padding:14px 24px;
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px; max-width:1100px; margin:0 auto;}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.04em}
+    .dot{width:10px; height:10px; border-radius:999px; background: linear-gradient(90deg,var(--accent),var(--accent2)); box-shadow: 0 0 18px rgba(124,92,255,.6);}
+    .menu{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    .menu a{padding:8px 10px; border-radius:12px; color:var(--muted)}
+    .menu a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      padding:10px 14px; border-radius:14px; border:1px solid var(--line);
+      background: rgba(255,255,255,.05); color:var(--text); font-weight:700;
+      display:inline-flex; align-items:center; justify-content:center;
     }
-    .brand{font-weight:800}
-    .menu{display:flex; gap:14px}
-    .menu a{color:var(--muted)}
-    .menu a:hover{color:var(--text)}
-    .hero{padding:48px 0}
+    .btn.primary{
+      border:none;
+      background: linear-gradient(90deg,var(--accent),var(--accent2));
+      color:#071021;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .hero{padding:54px 0 18px}
+    .grid{display:grid; grid-template-columns: 1.15fr .85fr; gap:18px}
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+
     .card{
-      background:var(--card);
+      background: rgba(18,26,42,.75);
       border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:24px;
-      margin-bottom:24px;
+      border-radius: var(--radius);
+      padding:22px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
     }
-    h1{margin-top:0}
-    .lead{color:var(--muted)}
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:16px;
-    }
-    .mini{
-      background:rgba(255,255,255,.03);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:16px;
-    }
+    h1{margin:0 0 10px; font-size: clamp(28px, 4vw, 44px); line-height:1.08}
+    .lead{color:var(--muted); font-size:16px; line-height:1.7; margin:0 0 18px}
+    .tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .tag{padding:8px 10px; border-radius:999px; border:1px solid var(--line); color:var(--muted); font-size:13px}
+    .kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px}
+    @media (max-width:600px){ .kpis{grid-template-columns:1fr} }
+    .kpi{padding:14px; border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,.03)}
+    .kpi b{display:block; font-size:18px}
+    .kpi span{color:var(--muted); font-size:12px}
+
+    .section{padding:18px 0}
+    .secTitle{display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom:12px}
+    h2{margin:0; font-size:20px}
+    .sub{color:var(--muted); font-size:13px}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    @media (max-width:900px){ .cards{grid-template-columns:1fr} }
+    .mini{padding:16px; border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,.03)}
+    .mini h3{margin:0 0 6px; font-size:16px}
+    .mini p{margin:0; color:var(--muted); font-size:13px; line-height:1.6}
+
+    .list{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+    .item{display:flex; gap:10px; padding:12px; border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,.03)}
+    .badge{min-width:64px; text-align:center; padding:8px 10px; border-radius:14px; background:rgba(124,92,255,.18); border:1px solid rgba(124,92,255,.35); font-size:12px; color:#d9d0ff}
+    .footer{padding:28px 0 60px; color:var(--muted); font-size:12px}
+    .hr{height:1px; background:var(--line); margin:14px 0}
+    .note{color:var(--muted); font-size:12px; line-height:1.6}
+
+    /* === Photos === */
     .photo{
       width:100%;
-      aspect-ratio:4/3;
-      object-fit:cover;
-      border-radius:14px;
-      margin-bottom:10px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      margin-bottom: 10px;
     }
-    footer{
-      margin-top:40px;
-      padding:20px;
-      text-align:center;
+
+    /* === Donation (QR) === */
+    .donationGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width:900px){ .donationGrid{grid-template-columns:1fr} }
+    .qrWrap{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .qr{
+      width:100%;
+      max-width:320px;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding:12px;
+    }
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
       color:var(--muted);
       font-size:12px;
     }
@@ -74,62 +134,227 @@
 <body>
 <header>
   <div class="nav">
-    <div class="brand">ガチトレ部 OFFICIAL FANCLUB</div>
+    <div class="brand"><span class="dot"></span> ガチトレ部 <span style="color:var(--muted);font-weight:700;">FANCLUB</span></div>
     <nav class="menu">
+      <a href="#news">INFORMATION</a>
+      <a href="#schedule">SCHEDULE</a>
       <a href="#members">MEMBERS</a>
+      <a href="#content">CONTENTS</a>
+      <a href="#donation">筋肉募金</a>
+      <a href="#goods">GOODS</a>
+      <a href="#contact">CONTACT</a>
     </nav>
+    <div class="cta">
+      <a class="btn" href="#join">会員ページへ</a>
+      <!-- 入会導線：必要ならフォームURLに差し替え -->
+      <a class="btn primary" href="#join">今すぐ入部（無料）</a>
+    </div>
   </div>
 </header>
 
 <div class="wrap">
-
-  <section class="hero">
+  <section class="hero grid">
     <div class="card">
-      <h1>筋トレは、才能より習慣。</h1>
+      <h1>筋トレが“文化”になる場所。<br>ガチトレ部 OFFICIAL FANCLUB</h1>
       <p class="lead">
-        ガチトレ部は「続ける筋トレ」をテーマにしたファンクラブです。<br>
-        仲間と一緒に、今日も一歩前へ。
+        会員限定の <b>トレログ / 動画 / 写真 / Q&A</b> を更新中。<br>
+        続ける人が、いちばん強い。
       </p>
+
+      <div class="tags">
+        <div class="tag">週1：限定MOVIE</div>
+        <div class="tag">週2：限定BLOG</div>
+        <div class="tag">月1：ライブ配信（仮）</div>
+        <div class="tag">フォーム相談（抽選/仮）</div>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi"><b>“記録”が資産</b><span>成長ログを残す</span></div>
+        <div class="kpi"><b>“習慣”が武器</b><span>続く仕掛け</span></div>
+        <div class="kpi"><b>“仲間”が加速</b><span>応援と熱量</span></div>
+      </div>
+
+      <div class="hr"></div>
+      <p class="note">
+        ※このページは公開用のFCトップです。<br>
+        まずは公開＆更新を優先し、ログイン/課金は後から追加できます。
+      </p>
+    </div>
+
+    <div class="card" id="join">
+      <div class="secTitle">
+        <h2>会員プラン（仮）</h2>
+        <div class="sub">最初は無料公開→後から課金でもOK</div>
+      </div>
+
+      <ul class="list">
+        <li class="item">
+          <div class="badge">FREE</div>
+          <div>
+            <b>応援登録</b><br>
+            <span class="sub">更新通知 / 公開動画 / スケジュール</span>
+          </div>
+        </li>
+        <li class="item">
+          <div class="badge">LITE</div>
+          <div>
+            <b>限定コンテンツ</b><br>
+            <span class="sub">BLOG / MOVIE / PHOTO（会員限定）</span>
+          </div>
+        </li>
+        <li class="item">
+          <div class="badge">PRO</div>
+          <div>
+            <b>参加型</b><br>
+            <span class="sub">月1ライブ / 投票 / Q&A優先（仮）</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="hr"></div>
+
+      <!-- ここをフォームURLに変えると即運用できます -->
+      <a class="btn primary" href="#contact" style="display:block;text-align:center;">入部・問い合わせ（仮）</a>
+      <p class="note">※決済・ログインは「第2段階」で実装します。</p>
     </div>
   </section>
 
-  <section id="members">
+  <section class="section" id="news">
+    <div class="secTitle">
+      <h2>INFORMATION</h2><div class="sub">お知らせ</div>
+    </div>
+    <div class="cards">
+      <div class="mini"><h3>更新：限定MOVIE #001</h3><p>フォームの“崩れポイント”3つを解説（仮）</p></div>
+      <div class="mini"><h3>企画：月末ライブ（仮）</h3><p>減量期のリアル、食事とトレのバランス</p></div>
+      <div class="mini"><h3>募集：質問箱</h3><p>次回Q&Aで回答します（仮）</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="schedule">
+    <div class="secTitle">
+      <h2>SCHEDULE</h2><div class="sub">活動予定</div>
+    </div>
+    <ul class="list">
+      <li class="item"><div class="badge">今週</div><div><b>合同トレ</b><div class="sub">場所：未定 / 時間：未定</div></div></li>
+      <li class="item"><div class="badge">来週</div><div><b>撮影日</b><div class="sub">限定動画の収録（仮）</div></div></li>
+      <li class="item"><div class="badge">月末</div><div><b>ライブ配信</b><div class="sub">会員向け（仮）</div></div></li>
+    </ul>
+  </section>
+
+  <!-- MEMBERS（画像ファイル名：images_member1.png〜4.png） -->
+  <section class="section" id="members">
+    <div class="secTitle">
+      <h2>MEMBERS</h2><div class="sub">部員紹介</div>
+    </div>
+
+    <div class="cards">
+      <div class="mini">
+        <img class="photo" src="images_member1.png" alt="部長">
+        <h3>部長</h3>
+        <p>得意：胸 / 背中 / 追い込み。名言：続けたやつが勝つ。</p>
+      </div>
+
+      <div class="mini">
+        <img class="photo" src="images_member2.png" alt="副部長">
+        <h3>副部長</h3>
+        <p>得意：脚。フォームの鬼。食事管理も担当。</p>
+      </div>
+
+      <div class="mini">
+        <img class="photo" src="images_member3.png" alt="広報">
+        <h3>広報</h3>
+        <p>得意：ショート動画。撮影・編集担当。</p>
+      </div>
+
+      <div class="mini">
+        <img class="photo" src="images_member4.png" alt="メンバー">
+        <h3>メンバー</h3>
+        <p>得意：腕 / 肩。ひとこと：今日も積み上げ。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="content">
+    <div class="secTitle">
+      <h2>CONTENTS</h2><div class="sub">会員限定コンテンツの例</div>
+    </div>
+    <div class="cards">
+      <div class="mini"><h3>BLOG</h3><p>トレログ、食事、減量期のメンタル、失敗談。</p></div>
+      <div class="mini"><h3>MOVIE</h3><p>フォーム解説、ルーティン、密着、ライブアーカイブ。</p></div>
+      <div class="mini"><h3>PHOTO</h3><p>大会写真、オフショット、壁紙配布。</p></div>
+    </div>
+  </section>
+
+  <!-- 筋肉募金（QR決済） -->
+  <section class="section" id="donation">
+    <div class="secTitle">
+      <h2>筋肉募金</h2><div class="sub">応援が、次の撮影と活動の燃料になります</div>
+    </div>
+
     <div class="card">
-      <h2>MEMBERS</h2>
-
-      <div class="cards">
-        <div class="mini">
-          <img class="photo" src="images/member1.jpg" alt="部長">
-          <h3>部長</h3>
-          <p>得意：胸・背中<br>続けたやつが勝つ。</p>
+      <div class="donationGrid">
+        <div class="qrWrap">
+          <div class="pill">📱 スマホでQRを読み取り → 電子決済</div>
+          <img class="qr" src="kinnikubokin_qr.png" alt="筋肉募金 QRコード（電子決済）">
+          <p class="note">
+            ※QR画像ファイル名は <b>kinnikubokin_qr.png</b> を想定しています。<br>
+            すでに別名でアップした場合は、この行のファイル名だけ差し替えてください。
+          </p>
         </div>
 
         <div class="mini">
-          <img class="photo" src="images/member2.jpg" alt="副部長">
-          <h3>副部長</h3>
-          <p>得意：脚<br>フォームは裏切らない。</p>
-        </div>
+          <h3>募金の使い道（例）</h3>
+          <p>
+            ・撮影機材（ライト/マイク）<br>
+            ・ジム利用費/場所代<br>
+            ・大会遠征の交通費<br>
+            ・グッズ制作（タオル/ステッカー）<br>
+          </p>
 
-        <div class="mini">
-          <img class="photo" src="images/member3.jpg" alt="広報">
-          <h3>広報</h3>
-          <p>得意：動画・発信<br>記録も筋トレ。</p>
-        </div>
+          <div class="hr"></div>
 
-        <div class="mini">
-          <img class="photo" src="images/member4.jpg" alt="メンバー">
-          <h3>メンバー</h3>
-          <p>得意：腕・肩<br>今日も積み上げ。</p>
+          <h3>応援してくれた方へ（案）</h3>
+          <p>
+            ・支援者限定の「お礼動画」<br>
+            ・壁紙（高画質）配布<br>
+            ・活動ログにSpecial Thanks掲載（希望者）<br>
+          </p>
+
+          <div class="hr"></div>
+
+          <p class="note">
+            ※決済リンク（Stripe/PayPayなど）を別で持っている場合、QRの代わりにボタンリンクも追加できます。
+          </p>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="section" id="goods">
+    <div class="secTitle">
+      <h2>GOODS</h2><div class="sub">グッズ（仮）</div>
+    </div>
+    <div class="mini">
+      <p class="sub">Tシャツ / タオル / ステッカー / 会員証 など。販売先は後でリンク設定。</p>
+      <a class="btn" href="#" onclick="alert('あとでECリンクを設定できます！');return false;">ECへ（仮）</a>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="secTitle">
+      <h2>CONTACT</h2><div class="sub">問い合わせ</div>
+    </div>
+    <div class="mini">
+      <p class="sub">下のメール宛に連絡してください（あとでフォーム化できます）。</p>
+      <p><b>メール：</b> your-email@example.com</p>
+      <p class="note">※ここをGoogleフォームのリンクに差し替えるだけで、超早く運用できます。</p>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="hr"></div>
+    © GACHI TRAINING CLUB. All rights reserved.
+  </div>
 </div>
-
-<footer>
-  © GACHI TRAINING CLUB
-</footer>
-
 </body>
 </html>
